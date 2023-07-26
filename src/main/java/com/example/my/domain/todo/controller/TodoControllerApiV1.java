@@ -2,6 +2,7 @@ package com.example.my.domain.todo.controller;
 
 import com.example.my.domain.todo.dto.ReqTodoTableInsertDTO;
 import com.example.my.domain.todo.dto.ReqTodoTableUpdateDoneYnDTO;
+import com.example.my.domain.todo.dto.ResTodoTableDTO;
 import com.example.my.domain.todo.service.TodoServiceApiV1;
 import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
@@ -16,7 +17,7 @@ public class TodoControllerApiV1 {
     private final TodoServiceApiV1 todoServiceApiV1;
 
     @GetMapping
-    public ResponseEntity<?> getTodoTableData(HttpSession session) {
+    public ResponseEntity<?> getTodoTableData(@RequestBody ResTodoTableDTO dto,HttpSession session) {
         // TODO : 서비스에서 할 일 목록 가져오기
         return null;
     }

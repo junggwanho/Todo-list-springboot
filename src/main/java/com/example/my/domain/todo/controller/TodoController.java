@@ -1,5 +1,7 @@
 package com.example.my.domain.todo.controller;
 
+import com.example.my.common.dto.LoginUserDTO;
+import com.example.my.domain.todo.dto.ResTodoTableDTO;
 import com.example.my.domain.todo.service.TodoService;
 import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
@@ -22,6 +24,11 @@ public class TodoController {
         }
 
         System.out.println(session.getAttribute("dto"));
+        // 세션에게 로그인 유저아이디 바기
+        LoginUserDTO loginUserDTO = (LoginUserDTO) session.getAttribute("dto");
+        // 서비스에게 투두 dto박기
+        ResTodoTableDTO dto = todoService.getTodoTableData(loginUserDTO);
+        modelAndView.addObject("dto", dto);
 
         modelAndView.setViewName("todo/table");
         return modelAndView;

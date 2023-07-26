@@ -8,6 +8,7 @@ import com.example.my.domain.todo.dto.ResTodoTableDTO;
 import com.example.my.model.todo.entity.TodoEntity;
 import com.example.my.model.todo.repository.TodoRepository;
 import com.example.my.model.user.entity.UserEntity;
+import jakarta.servlet.http.HttpSession;
 import com.example.my.model.user.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -27,10 +28,19 @@ public class TodoServiceApiV1 {
     private final TodoRepository todoRepository;
     private final UserRepository userRepository;
 
-    public ResponseEntity<?> getTodoTableData(LoginUserDTO loginUserDTO) {
+    public ResponseEntity<?> getTodoTableData(LoginUserDTO dto) {
         // TODO : 리파지토리에서 유저 기본키로 삭제되지 않은 할 일 목록 찾기
+        
         // TODO : 응답 데이터로 리턴하기 (할 일 목록 조회에 성공하였습니다.)
-        return null;
+        
+
+        return new ResponseEntity<>(
+                    ResponseDTO.builder()
+                    .code(0)
+                    .message("할일 목록 조회에 성공하였습니다.")
+                    .build(),
+                    HttpStatus.OK
+                );
     }
 
     @Transactional
